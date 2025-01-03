@@ -41,7 +41,10 @@ function startRound() {
     // Create the game screen
     homeScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
-    console.log('Screen Switch')
+    console.log('Screen Switch');
+
+
+    // 
 
 
     // Display USS Assembly
@@ -50,7 +53,7 @@ function startRound() {
     USSassemblyImage.style.border = '1px solid green';
     USSassemblyImage.style.height = '150px';
     USSassemblyImage.style.width = '150px';
-    USSassemblyImage.style.backgroundImage = 'USSassembly.webp';
+    USSassemblyImage.style.backgroundImage = "url('USSassembly.webp')";
     console.log(USSassemblyImage);
 
 
@@ -61,7 +64,7 @@ function startRound() {
     AlienShipImage.style.border = '1px solid purple';
     AlienShipImage.style.height = '150px';
     AlienShipImage.style.width = '150px';
-    console.log(AlienShip1)
+    console.log(AlienShipImage)
 
 
     // 
