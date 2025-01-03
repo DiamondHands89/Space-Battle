@@ -34,6 +34,9 @@ function getRandomAlienAccuracy(min, max) {
 
 // Begin the round
 function startRound() {
+    const scoreboard = document.querySelector('.scoreboard');
+    const gameDisplay = document.querySelector('.gameDisplay');
+    const controls = document.querySelector('.controls')
 
     // Create the game screen
     homeScreen.style.display = 'none';
@@ -41,9 +44,25 @@ function startRound() {
     console.log('Screen Switch')
 
 
+    // Display USS Assembly
+    const USSassemblyImage = document.createElement('div');
+    gameDisplay.appendChild(USSassemblyImage);
+    USSassemblyImage.style.border = '1px solid green';
+    USSassemblyImage.style.height = '150px';
+    USSassemblyImage.style.width = '150px';
+    USSassemblyImage.style.backgroundImage = 'USSassembly.webp';
+    console.log(USSassemblyImage);
+
+
     // Display the first Allien Ship
     const AlienShip1 = new AlienShip("First Ship", getRandomAlienStat(3,6), getRandomAlienStat(2,4), getRandomAlienAccuracy(.6,.8));
+    const AlienShipImage = document.createElement('div');
+    gameDisplay.appendChild(AlienShipImage);
+    AlienShipImage.style.border = '1px solid purple';
+    AlienShipImage.style.height = '150px';
+    AlienShipImage.style.width = '150px';
     console.log(AlienShip1)
+
 
     // 
 }
