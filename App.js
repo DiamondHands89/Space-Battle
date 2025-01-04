@@ -64,11 +64,15 @@ function startRound() {
     AlienShipImage.style.border = '1px solid purple';
     AlienShipImage.style.height = '150px';
     AlienShipImage.style.width = '150px';
+    AlienShipImage.style.backgroundImage = "download.png";
     console.log(AlienShipImage)
 
 
     // 
 }
 
-
+function fire() {
+     
+    console.log("Shot fired");
+}
 
