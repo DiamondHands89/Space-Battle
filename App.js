@@ -7,6 +7,8 @@ const USSassembly = {
 }
 
 
+
+
 class AlienShip {
     constructor(name, hull, firepower, accuracy) {
         this.name = name;
@@ -15,6 +17,8 @@ class AlienShip {
         this.accuracy = accuracy;
     }
 }
+
+const AlienShip1 = new AlienShip("First Ship", getRandomAlienStat(3,6), getRandomAlienStat(2,4), getRandomAlienAccuracy(.6,.8));
 
 // Alien Hull 3-6
 // Alien Firepower 2-4
@@ -58,7 +62,6 @@ function startRound() {
 
 
     // Display the first Allien Ship
-    const AlienShip1 = new AlienShip("First Ship", getRandomAlienStat(3,6), getRandomAlienStat(2,4), getRandomAlienAccuracy(.6,.8));
     const AlienShipImage = document.createElement('div');
     gameDisplay.appendChild(AlienShipImage);
     AlienShipImage.style.border = '1px solid purple';
@@ -71,8 +74,22 @@ function startRound() {
     // 
 }
 
+
 function fire() {
-     
     console.log("Shot fired");
+
+    const hit = Math.random();
+
+    if (hit <= USSassembly.accuracy) {
+        AlienShip1.hull -= USSassembly.firepower;
+        console.log("Hit! Alien ship hull is now ${AlienShip1.hull}");
+
+        if (AlienShip1.hull <= 0) {
+            console.log("Alien ship destroyed")
+            // Ship destruction logic
+        }
+    } else {
+        console.log("Missed!");
+    }
 }
 
