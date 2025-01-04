@@ -91,5 +91,9 @@ function fire() {
     } else {
         console.log("Missed!");
     }
+
+    function alienCounterStrike() {
+        
+    }
 }
 
