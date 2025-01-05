@@ -58,6 +58,7 @@ function startRound() {
     USSassemblyImage.style.height = '150px';
     USSassemblyImage.style.width = '150px';
     USSassemblyImage.style.backgroundImage = "url('USSassembly.webp')";
+    USSassemblyImage.style.backgroundSize = 'cover';
     console.log(USSassemblyImage);
 
 
@@ -67,7 +68,9 @@ function startRound() {
     AlienShipImage.style.border = '1px solid purple';
     AlienShipImage.style.height = '150px';
     AlienShipImage.style.width = '150px';
-    AlienShipImage.style.backgroundImage = "download.png";
+    AlienShipImage.style.backgroundImage = "url('download.png')";
+    AlienShipImage.style.backgroundSize = 'cover';
+    AlienShipImage.style.backgroundPosition = 'center center'
     console.log(AlienShipImage)
 
 
