@@ -6,9 +6,6 @@ const USSassembly = {
     accuracy: .7
 }
 
-
-
-
 class AlienShip {
     constructor(name, hull, firepower, accuracy) {
         this.name = name;
@@ -18,7 +15,6 @@ class AlienShip {
     }
 }
 
-const AlienShip1 = new AlienShip("First Ship", getRandomAlienStat(3,6), getRandomAlienStat(2,4), getRandomAlienAccuracy(.6,.8));
 
 // Alien Hull 3-6
 // Alien Firepower 2-4
@@ -35,6 +31,9 @@ function getRandomAlienAccuracy(min, max) {
     return Math.round(accuracy * 10) / 10;
     
 }
+
+const alienShips = [];
+let currentAlienIndex = 0;
 
 // Begin the round
 function startRound() {
@@ -63,40 +62,110 @@ function startRound() {
 
 
     // Display the first Allien Ship
-    const AlienShipImage = document.createElement('div');
-    gameDisplay.appendChild(AlienShipImage);
-    AlienShipImage.style.border = '1px solid purple';
-    AlienShipImage.style.height = '150px';
-    AlienShipImage.style.width = '150px';
-    AlienShipImage.style.backgroundImage = "url('download.png')";
-    AlienShipImage.style.backgroundSize = 'cover';
-    AlienShipImage.style.backgroundPosition = 'center center'
-    console.log(AlienShipImage)
+    // const AlienShipImage = document.createElement('div');
+    // gameDisplay.appendChild(AlienShipImage);
+    // AlienShipImage.style.border = '1px solid purple';
+    // AlienShipImage.style.height = '150px';
+    // AlienShipImage.style.width = '150px';
+    // AlienShipImage.style.backgroundImage = "url('download.png')";
+    // AlienShipImage.style.backgroundSize = 'cover';
+    // AlienShipImage.style.backgroundPosition = 'center center'
+    // console.log(AlienShipImage)
 
 
-    // 
+    // Create and Display Alien Ships
+    for (let i = 1; i <= 6; i++) {
+        const newAlienShip = new AlienShip(`Alien Ship ${i}`, getRandomAlienStat(3, 6), getRandomAlienStat(2, 4), getRandomAlienAccuracy(0.6, 0.8));
+        alienShips.push(newAlienShip);
+        // const alienShipImage = document.createElement('div'); 
+        // gameDisplay.appendChild(alienShipImage); 
+        // alienShipImage.style.border = '1px solid purple'; 
+        // alienShipImage.style.height = '150px'; 
+        // alienShipImage.style.width = '150px'; 
+        // alienShipImage.style.backgroundImage = "url('download.png')"; 
+        // alienShipImage.style.backgroundSize = 'cover'; 
+        // alienShipImage.style.backgroundPosition = 'center center'; 
+        // console.log(alienShipImage);
+    }
+
+    // Display first alien ship
+    displayCurrentAlienShip();
+}
+
+
+function displayCurrentAlienShip() {
+    const gameDisplay = document.querySelector('.gameDisplay')
+
+    // Remove any existing alien ships
+    const existingAlienShipImage = document.querySelector('.alienShipImage');
+    if (existingAlienShipImage) {
+        gameDisplay.removeChild(existingAlienShipImage);
+    }
+
+    // Display the current Alien Ship
+    if (currentAlienIndex < alienShips.length) {
+        const activeAlienShip = alienShips[currentAlienIndex]; 
+        const alienShipImage = document.createElement('div'); 
+        alienShipImage.classList.add('alienShipImage'); 
+        gameDisplay.appendChild(alienShipImage); 
+        alienShipImage.style.border = '1px solid purple'; 
+        alienShipImage.style.height = '150px'; 
+        alienShipImage.style.width = '150px'; 
+        alienShipImage.style.backgroundImage = "url('download.png')"; 
+        alienShipImage.style.backgroundSize = 'cover'; 
+        alienShipImage.style.backgroundPosition = 'center center'; 
+        console.log(alienShipImage);
+    }
 }
 
 
 function fire() {
+    const activeAlienShip = alienShips[currentAlienIndex];
+    const hit = Math.random();
     console.log("Shot fired");
 
-    const hit = Math.random();
-
     if (hit <= USSassembly.accuracy) {
-        AlienShip1.hull -= USSassembly.firepower;
-        console.log("Hit! Alien ship hull is now ${AlienShip1.hull}");
+        activeAlienShip.hull -= USSassembly.firepower;
+        console.log(`Hit! ${activeAlienShip.name} ship hull is now ${activeAlienShip.hull}`);
 
-        if (AlienShip1.hull <= 0) {
-            console.log("Alien ship destroyed")
+        if (activeAlienShip.hull <= 0) {
+            console.log(`${activeAlienShip.name} destroyed`);
+            currentAlienIndex++;
+            if (currentAlienIndex >= alienShips.length) {
+                console.log("All ships destroyed!");
+                // Win Screen
+            }
             // Ship destruction logic
         }
     } else {
         console.log("Missed!");
     }
 
-    function alienCounterStrike() {
-        
+    if (currentAlienIndex < alienShips.length) {
+        alienCounterStrike();
     }
+}
+    
+
+function alienCounterStrike() {
+    const activeAlienShip = alienShips[currentAlienIndex];
+    console.log("Alien Counterstrike")
+
+    if (activeAlienShip.hull > 0) {
+        const counterHit = Math.random();
+        if (counterHit <= activeAlienShip.accuracy) {
+            USSassembly.hull -= activeAlienShip.firepower;
+            console.log("You've been hit!")
+            console.log(USSassembly)
+
+            if (USSassembly.hull <= 0) {
+                console.log("USS Assembly destroyed!");
+                // USS ASSembly Destruction logic
+            }
+        } else {
+            console.log('Alien missed!');
+        }
+    }
+    
 }
 
