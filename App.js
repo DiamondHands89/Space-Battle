@@ -60,32 +60,10 @@ function startRound() {
     USSassemblyImage.style.backgroundSize = 'cover';
     console.log(USSassemblyImage);
 
-
-    // Display the first Allien Ship
-    // const AlienShipImage = document.createElement('div');
-    // gameDisplay.appendChild(AlienShipImage);
-    // AlienShipImage.style.border = '1px solid purple';
-    // AlienShipImage.style.height = '150px';
-    // AlienShipImage.style.width = '150px';
-    // AlienShipImage.style.backgroundImage = "url('download.png')";
-    // AlienShipImage.style.backgroundSize = 'cover';
-    // AlienShipImage.style.backgroundPosition = 'center center'
-    // console.log(AlienShipImage)
-
-
     // Create and Display Alien Ships
     for (let i = 1; i <= 6; i++) {
         const newAlienShip = new AlienShip(`Alien Ship ${i}`, getRandomAlienStat(3, 6), getRandomAlienStat(2, 4), getRandomAlienAccuracy(0.6, 0.8));
         alienShips.push(newAlienShip);
-        // const alienShipImage = document.createElement('div'); 
-        // gameDisplay.appendChild(alienShipImage); 
-        // alienShipImage.style.border = '1px solid purple'; 
-        // alienShipImage.style.height = '150px'; 
-        // alienShipImage.style.width = '150px'; 
-        // alienShipImage.style.backgroundImage = "url('download.png')"; 
-        // alienShipImage.style.backgroundSize = 'cover'; 
-        // alienShipImage.style.backgroundPosition = 'center center'; 
-        // console.log(alienShipImage);
     }
 
     // Display first alien ship

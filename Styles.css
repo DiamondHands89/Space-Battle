@@ -65,6 +65,17 @@
         border: 1px solid blue;
         height: 20%;
     }
+        .controlButtons {
+            border: 3px solid crimson;
+            border-radius: 20%;
+            height: 50px;
+            width: 150px;
+            color: crimson;
+            font-weight: bolder;
+            font-size: 100%;
+            background-color: blue;
+            opacity: 90%;
+        }
 
 
 .win {
