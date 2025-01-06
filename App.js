@@ -35,6 +35,7 @@ function getRandomAlienAccuracy(min, max) {
 
 const alienShips = [];
 let currentAlienIndex = 0;
+let lives = 3;
 
 // Begin the round
 function startRound() {
