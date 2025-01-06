@@ -1,6 +1,7 @@
 const homeScreen = document.querySelector('.home');
 const gameScreen = document.querySelector('.game');
 const loseScreen = document.querySelector('.lose');
+const winScreen = document.querySelector('.win');
 const USSassembly = {
     hull: 20,
     firepower: 5,
@@ -38,6 +39,7 @@ const alienShips = [];
 let currentAlienIndex = 0;
 let lives = 3;
 let score = 0;
+let roundCount = 1;
 
 // Begin the round
 function startRound() {
@@ -49,6 +51,7 @@ function startRound() {
     homeScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
     loseScreen.style.display = 'none';
+    winScreen.style.display = 'none';
     console.log('Screen Switch');
 
 
@@ -118,7 +121,20 @@ function fire() {
 
             if (currentAlienIndex >= alienShips.length) {
                 console.log("All ships destroyed!");
+                score += 100;
+                roundCount ++;
+                const roundCountElement = document.querySelector('.roundCount');
+                roundCountElement.textContent = roundCount;
+
                 // Win Screen
+                winScreen.style.display = 'flex';
+                gameScreen.style.display = 'none';
+                setTimeout(() => {
+                    winScreen.style.display = 'none';
+                    startRound();
+                }, 10000);
+            } else {
+                displayCurrentAlienShip();
             }
             // Ship destruction logic
         }
