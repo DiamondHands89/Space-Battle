@@ -86,4 +86,6 @@
 
 .lose{
     display: none;
+    color: crimson;
+    font-size: 250px;
 }

@@ -3,7 +3,8 @@ const gameScreen = document.querySelector('.game');
 const USSassembly = {
     hull: 20,
     firepower: 5,
-    accuracy: .7
+    accuracy: .7,
+    maxHull: 20
 }
 
 class AlienShip {
