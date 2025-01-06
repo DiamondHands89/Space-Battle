@@ -18,13 +18,16 @@
         margin-right: auto;
         height: 20%;
         width: 30%;
+        border-radius: 10px;
+        background-color: crimson;
+        font-size: 50px;
     }
 
 
 /* GAME SCREEN */
 .game {
     /* CHANGE BACK TO NONE */
-    display: flex;
+    display: none;
     flex-direction: column;
     /* border: 1px solid seagreen; */
     height: 90vh;
@@ -82,6 +85,8 @@
 
 .win {
     display: none;
+    color: blue;
+    font-size: 100px;
 }
 
 .lose{

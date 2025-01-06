@@ -37,6 +37,7 @@ function getRandomAlienAccuracy(min, max) {
 const alienShips = [];
 let currentAlienIndex = 0;
 let lives = 3;
+let score = 0;
 
 // Begin the round
 function startRound() {
@@ -110,7 +111,11 @@ function fire() {
 
         if (activeAlienShip.hull <= 0) {
             console.log(`${activeAlienShip.name} destroyed`);
+            score += 10;
             currentAlienIndex++;
+            const scoreElement = document.querySelector('.score');
+            scoreElement.textContent = score;
+
             if (currentAlienIndex >= alienShips.length) {
                 console.log("All ships destroyed!");
                 // Win Screen
