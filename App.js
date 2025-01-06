@@ -1,5 +1,6 @@
 const homeScreen = document.querySelector('.home');
 const gameScreen = document.querySelector('.game');
+const loseScreen = document.querySelector('.lose');
 const USSassembly = {
     hull: 20,
     firepower: 5,
@@ -46,10 +47,8 @@ function startRound() {
     // Create the game screen
     homeScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
+    loseScreen.style.display = 'none';
     console.log('Screen Switch');
-
-
-    // 
 
 
     // Display USS Assembly
@@ -66,6 +65,7 @@ function startRound() {
     for (let i = 1; i <= 6; i++) {
         const newAlienShip = new AlienShip(`Alien Ship ${i}`, getRandomAlienStat(3, 6), getRandomAlienStat(2, 4), getRandomAlienAccuracy(0.6, 0.8));
         alienShips.push(newAlienShip);
+        console.log(newAlienShip)
     }
 
     // Display first alien ship
@@ -140,6 +140,17 @@ function alienCounterStrike() {
 
             if (USSassembly.hull <= 0) {
                 console.log("USS Assembly destroyed!");
+                lives--;
+                const lifeCount = document.querySelector('.lifeCount');
+                lifeCount.textContent = lives;
+
+                if (lives <= 0) {
+                    gameScreen.style.display = 'none';
+                    loseScreen.style.display = 'flex';
+                    console.log("Game Over!");
+                } else {
+                    USSassembly.hull = USSassembly.maxHull;
+                }
                 // USS ASSembly Destruction logic
             }
         } else {
