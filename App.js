@@ -41,11 +41,25 @@ let lives = 3;
 let score = 0;
 let roundCount = 1;
 
+
+const scoreboard = document.querySelector('.scoreboard');
+const gameDisplay = document.querySelector('.gameDisplay');
+const controls = document.querySelector('.controls');
+
+
+// Display USS Assembly
+const USSassemblyImage = document.createElement('div');
+gameDisplay.appendChild(USSassemblyImage);
+USSassemblyImage.style.border = '1px solid green';
+USSassemblyImage.style.height = '150px';
+USSassemblyImage.style.width = '150px';
+USSassemblyImage.style.backgroundImage = "url('USSassembly.webp')";
+USSassemblyImage.style.backgroundSize = 'cover';
+console.log(USSassemblyImage);
+
 // Begin the round
 function startRound() {
-    const scoreboard = document.querySelector('.scoreboard');
-    const gameDisplay = document.querySelector('.gameDisplay');
-    const controls = document.querySelector('.controls')
+
 
     // Create the game screen
     homeScreen.style.display = 'none';
@@ -54,16 +68,6 @@ function startRound() {
     winScreen.style.display = 'none';
     console.log('Screen Switch');
 
-
-    // Display USS Assembly
-    const USSassemblyImage = document.createElement('div');
-    gameDisplay.appendChild(USSassemblyImage);
-    USSassemblyImage.style.border = '1px solid green';
-    USSassemblyImage.style.height = '150px';
-    USSassemblyImage.style.width = '150px';
-    USSassemblyImage.style.backgroundImage = "url('USSassembly.webp')";
-    USSassemblyImage.style.backgroundSize = 'cover';
-    console.log(USSassemblyImage);
 
     // Create and Display Alien Ships
     for (let i = 1; i <= 6; i++) {
